@@ -1,0 +1,20 @@
+#built application files
+*.apk
+*.ap_
+site
+tmp
+target
+
+# files for the dex VM
+*.dex
+
+# Java class files
+*.class
+*.jar
+
+# generated GUI files
+R.java
+
+# IDE files
+.idea
+*.iml
