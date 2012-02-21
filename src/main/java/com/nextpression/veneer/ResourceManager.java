@@ -1,11 +1,13 @@
 package com.nextpression.veneer;
 
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 
 public interface ResourceManager {
 
-    Color color(String name);
+    int color(String name);
+
+    GradientDrawable gradient(String name);
 
     Drawable icon(String name);
 

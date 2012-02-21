@@ -2,4 +2,6 @@
 <resources>
     <string name="hello">Hello veneer!</string>
     <string name="app_name">veneer</string>
+    <string name="xmlGradient">Gradient in XML</string>
+    <string name="runtimeGradient">Gradient in Runtime</string>
 </resources>

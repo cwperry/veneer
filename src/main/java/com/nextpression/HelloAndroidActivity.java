@@ -1,8 +1,11 @@
 package com.nextpression;
 
 import android.app.Activity;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 
 public class HelloAndroidActivity extends Activity {
 
@@ -20,6 +23,18 @@ public class HelloAndroidActivity extends Activity {
         super.onCreate(savedInstanceState);
         Log.i(TAG, "onCreate");
         setContentView(R.layout.main);
+//        int[] colors = new int[] {getResources().getColor(R.color.darkBlue),
+//                getResources().getColor(R.color.cornFlowerBlue)};
+        int[] colors = new int[]{Color.parseColor("#FF012853"), Color.parseColor("#ff708f96")};
+        TextView runtime1 = (TextView) findViewById(R.id.runtimeView1);
+        TextView runtime2 = (TextView) findViewById(R.id.runtimeView2);
+
+
+        GradientDrawable gradientDrawable = new GradientDrawable(GradientDrawable.Orientation.TL_BR, colors);
+        runtime1.setBackgroundDrawable(gradientDrawable);
+        runtime2.setBackgroundDrawable(gradientDrawable);
+
+
     }
 
 }
