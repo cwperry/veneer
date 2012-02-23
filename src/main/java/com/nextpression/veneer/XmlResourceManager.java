@@ -15,12 +15,13 @@ public class XmlResourceManager implements ResourceManager {
 
     @Override
     public int color(String name) {
-        return 0;
+        return veneer.color(name);
     }
 
     @Override
     public GradientDrawable gradient(String name) {
-        return veneer.gradientColor(name);
+        //return veneer.gradientColor(name);
+        return null;
     }
 
     @Override
