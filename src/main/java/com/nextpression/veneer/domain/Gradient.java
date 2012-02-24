@@ -1,9 +1,9 @@
 package com.nextpression.veneer.domain;
 
-import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import com.google.common.collect.Lists;
 import com.google.common.primitives.Ints;
+import com.nextpression.veneer.util.ColorUtils;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
@@ -12,7 +12,7 @@ import java.util.List;
 
 //http://developer.android.com/reference/android/graphics/drawable/GradientDrawable.html
 /*
-    <gradient key="gradientName" orientation="BOTTOM_TOP">
+    <gradient id="gradientName" orientation="BOTTOM_TOP">
         <color>#FF012853</color>
         <color>#FF708f96</color>
     </gradient>
@@ -48,7 +48,7 @@ public class Gradient {
     private int[] buildColors() {
         List<Integer> concreteColors = Lists.newArrayList();
         for (String colorString : colors) {
-            concreteColors.add(Color.parseColor(colorString));
+            concreteColors.add(ColorUtils.parseColor(colorString));
         }
         return Ints.toArray(concreteColors);
     }

@@ -2,9 +2,9 @@ package com.nextpression.veneer;
 
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
+import com.nextpression.veneer.util.ColorUtils;
 import com.xtremelabs.robolectric.RobolectricTestRunner;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -24,7 +24,7 @@ public class XmlResourceManagerTest {
         manifest.append(createHeader());
         manifest.append(initializeStringXml());
         manifest.append(initializeColorXml());
-//        manifest.append(initializeGradientXml());
+        manifest.append(initializeGradientXml());
         manifest.append(createFooter());
 
         resourceManager.buildVeneer(manifest.toString());
@@ -39,7 +39,6 @@ public class XmlResourceManagerTest {
     }
 
     @Test
-    @Ignore
     public void testGradientReturnsCorrectValue() {
         assertThat(resourceManager.gradient("redGradient"), is(createGradient(BOTTOM_TOP, "#FFFF0000")));
         assertThat(resourceManager.gradient("greenGradient"), is(createGradient(TOP_BOTTOM, "#FF00FF00")));
@@ -54,7 +53,7 @@ public class XmlResourceManagerTest {
     }
 
     private GradientDrawable createGradient(GradientDrawable.Orientation orientation, String color) {
-        return new GradientDrawable(orientation, new int[]{Color.parseColor(color), Color.WHITE});
+        return new GradientDrawable(orientation, new int[]{ColorUtils.parseColor(color), Color.WHITE});
     }
 
     private String createHeader() {
@@ -77,7 +76,7 @@ public class XmlResourceManagerTest {
     private String initializeGradientXml() {
         StringBuilder sb = new StringBuilder();
         sb.append("<gradient id=\"redGradient\" orientation=\"BOTTOM_TOP\">");
-        sb.append("<color ref=\"red\"/>");
+        sb.append("<gradient-color ref=\"red\"/>");
         sb.append("<color ref=\"white\"/>");
         sb.append("</gradient>");
         sb.append("<gradient id=\"greenGradient\" orientation=\"TOP_BOTTOM\">");

@@ -1,5 +1,7 @@
 package com.nextpression.veneer.domain;
 
+import android.graphics.drawable.GradientDrawable;
+import com.nextpression.veneer.util.ColorUtils;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementMap;
 import org.simpleframework.xml.Root;
@@ -15,8 +17,8 @@ public class XmlVeneer {
     @ElementMap(entry = "string", key = "id", attribute = true, inline = true, required = false)
     private Map<String, String> strings;
 
-//    @ElementMap(entry = "gradient", key = "id", attribute = true, inline = true, required = false)
-//    private Map<String, Gradient> gradients;
+    @ElementMap(entry = "gradient", key = "id", attribute = true, inline = true, valueType = Gradient.class, required = false)
+    private Map<String, Gradient> gradients;
 
     @ElementMap(entry = "color", key = "id", attribute = true, inline = true, required = false)
     private Map<String, String> colors;
@@ -25,26 +27,13 @@ public class XmlVeneer {
         return strings.get(key);
     }
 
-//    public GradientDrawable gradientColor(String key) {
-//        return gradients.get(key).drawableFromGradient();
-//    }
+    public GradientDrawable gradientColor(String key) {
+        return gradients.get(key).drawableFromGradient();
+    }
 
     public int color(String key) {
-        return parseColor(colors.get(key));
+        return ColorUtils.parseColor(colors.get(key));
     }
 
-    private int parseColor(String colorString) {
-        if (colorString.charAt(0) == '#') {
-            // Use a long to avoid rollovers on #ffXXXXXX
-            long color = Long.parseLong(colorString.substring(1), 16);
-            if (colorString.length() == 7) {
-                // Set the alpha value
-                color |= 0x00000000ff000000;
-            } else if (colorString.length() != 9) {
-                throw new IllegalArgumentException("Unknown color");
-            }
-            return (int) color;
-        }
-        throw new IllegalArgumentException("Unknown color");
-    }
+
 }

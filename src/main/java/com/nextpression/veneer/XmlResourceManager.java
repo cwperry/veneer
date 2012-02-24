@@ -20,8 +20,7 @@ public class XmlResourceManager implements ResourceManager {
 
     @Override
     public GradientDrawable gradient(String name) {
-        //return veneer.gradientColor(name);
-        return null;
+        return veneer.gradientColor(name);
     }
 
     @Override
