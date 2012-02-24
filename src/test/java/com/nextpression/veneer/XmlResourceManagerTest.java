@@ -76,7 +76,7 @@ public class XmlResourceManagerTest {
     private String initializeGradientXml() {
         StringBuilder sb = new StringBuilder();
         sb.append("<gradient id=\"redGradient\" orientation=\"BOTTOM_TOP\">");
-        sb.append("<gradient-color ref=\"red\"/>");
+        sb.append("<color ref=\"red\"/>");
         sb.append("<color ref=\"white\"/>");
         sb.append("</gradient>");
         sb.append("<gradient id=\"greenGradient\" orientation=\"TOP_BOTTOM\">");
