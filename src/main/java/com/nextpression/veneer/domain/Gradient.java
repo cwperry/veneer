@@ -7,6 +7,7 @@ import com.nextpression.veneer.util.ColorUtils;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
+import org.simpleframework.xml.util.Entry;
 
 import java.util.List;
 
@@ -18,19 +19,28 @@ import java.util.List;
     </gradient>
  */
 @Root
-public class Gradient {
+public class Gradient implements Entry {
 
-    @Attribute
-    private String key;
+    @Attribute(name = "name")
+    private String name;
 
-    @Attribute
+    @Attribute(name = "orientation")
     private String orientation;
 
     @ElementList(inline = true, entry = "color")
     private List<String> colors;
 
-    public String getKey() {
-        return key;
+    public Gradient(@Attribute(name = "name") String name,
+                    @Attribute(name = "orientation") String orientation,
+                    @ElementList(inline = true, entry = "color") List<String> colors) {
+        this.name = name;
+        this.orientation = orientation;
+        this.colors = colors;
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 
     public String getOrientation() {
@@ -57,13 +67,5 @@ public class Gradient {
         return GradientDrawable.Orientation.valueOf(orientation);
     }
 
-    //0 = LEFT_RIGHT
-    //45 = BL_TR
-    //90 = BOTTOM_TOP
-    //135 = BR_TL
-    //180 = RIGHT_LEFT
-    //225 = TR_BL
-    //270 = TOP_BOTTOM
     //315 = TL_BR
-
 }

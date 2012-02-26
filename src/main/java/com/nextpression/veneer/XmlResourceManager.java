@@ -6,8 +6,6 @@ import com.google.common.annotations.VisibleForTesting;
 import com.nextpression.veneer.domain.XmlVeneer;
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
-import org.simpleframework.xml.strategy.CycleStrategy;
-import org.simpleframework.xml.strategy.Strategy;
 
 public class XmlResourceManager implements ResourceManager {
 
@@ -35,8 +33,7 @@ public class XmlResourceManager implements ResourceManager {
 
     @VisibleForTesting
     void buildVeneer(String xmlString) throws Exception {
-        Strategy strategy = new CycleStrategy("id", "ref");
-        Serializer serializer = new Persister(strategy);
+        Serializer serializer = new Persister();
         veneer = serializer.read(XmlVeneer.class, xmlString);
     }
 

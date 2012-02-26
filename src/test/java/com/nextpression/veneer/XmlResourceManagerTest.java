@@ -66,36 +66,42 @@ public class XmlResourceManagerTest {
 
     private String initializeStringXml() {
         StringBuilder sb = new StringBuilder();
-        sb.append("<string id=\"foo\">Foo</string>");
-        sb.append("<string id=\"bar\">Bar</string>");
-        sb.append("<string id=\"foo2\">Foo2</string>");
-        sb.append("<string id=\"bar2\">Bar2</string>");
+        sb.append("<strings>");
+        sb.append("<string name=\"foo\">Foo</string>");
+        sb.append("<string name=\"bar\">Bar</string>");
+        sb.append("<string name=\"foo2\">Foo2</string>");
+        sb.append("<string name=\"bar2\">Bar2</string>");
+        sb.append("</strings>");
         return sb.toString();
     }
 
     private String initializeGradientXml() {
         StringBuilder sb = new StringBuilder();
-        sb.append("<gradient id=\"redGradient\" orientation=\"BOTTOM_TOP\">");
-        sb.append("<color ref=\"red\"/>");
-        sb.append("<color ref=\"white\"/>");
+        sb.append("<gradient_definitions>");
+        sb.append("<gradient name=\"redGradient\" orientation=\"BOTTOM_TOP\">");
+        sb.append("<color>#FFFF0000</color>");
+        sb.append("<color>#FFFFFFFF</color>");
         sb.append("</gradient>");
-        sb.append("<gradient id=\"greenGradient\" orientation=\"TOP_BOTTOM\">");
-        sb.append("<color ref=\"green\"/>");
-        sb.append("<color ref=\"white\"/>");
+        sb.append("<gradient name=\"greenGradient\" orientation=\"TOP_BOTTOM\">");
+        sb.append("<color>#FF00FF00</color>");
+        sb.append("<color>#FFFFFFFF</color>");
         sb.append("</gradient>");
-        sb.append("<gradient id=\"blueGradient\" orientation=\"LEFT_RIGHT\">");
-        sb.append("<color ref=\"blue\"/>");
-        sb.append("<color ref=\"white\"/>");
+        sb.append("<gradient name=\"blueGradient\" orientation=\"LEFT_RIGHT\">");
+        sb.append("<color>#FF0000FF</color>");
+        sb.append("<color>#FFFFFFFF</color>");
         sb.append("</gradient>");
+        sb.append("</gradient_definitions>");
         return sb.toString();
     }
 
     private String initializeColorXml() {
         StringBuilder sb = new StringBuilder();
-        sb.append("<color id=\"red\">#FFFF0000</color>");
-        sb.append("<color id=\"green\">#FF00FF00</color>");
-        sb.append("<color id=\"blue\">#FF0000FF</color>");
-        sb.append("<color id=\"white\">#FF000000</color>");
+        sb.append("<colors>");
+        sb.append("<color name=\"red\" value=\"#FFFF0000\"/>");
+        sb.append("<color name=\"green\" value=\"#FF00FF00\"/>");
+        sb.append("<color name=\"blue\" value=\"#FF0000FF\"/>");
+        sb.append("<color name=\"white\" value=\"#FF000000\"/>");
+        sb.append("</colors>");
         return sb.toString();
     }
 }

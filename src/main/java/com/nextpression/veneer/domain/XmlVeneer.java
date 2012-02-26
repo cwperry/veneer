@@ -1,10 +1,11 @@
 package com.nextpression.veneer.domain;
 
 import android.graphics.drawable.GradientDrawable;
-import com.nextpression.veneer.util.ColorUtils;
 import org.simpleframework.xml.Element;
+import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.ElementMap;
 import org.simpleframework.xml.Root;
+import org.simpleframework.xml.util.Dictionary;
 
 import java.util.Map;
 
@@ -14,14 +15,14 @@ public class XmlVeneer {
     @Element
     private String name;
 
-    @ElementMap(entry = "string", key = "id", attribute = true, inline = true, required = false)
+    @ElementMap(name = "strings", entry = "string", key = "name", attribute = true, required = false)
     private Map<String, String> strings;
 
-    @ElementMap(entry = "gradient", key = "id", attribute = true, inline = true, valueType = Gradient.class, required = false)
-    private Map<String, Gradient> gradients;
+    @ElementList(name = "gradient_definitions", required = false)
+    private Dictionary<Gradient> gradients;
 
-    @ElementMap(entry = "color", key = "id", attribute = true, inline = true, required = false)
-    private Map<String, String> colors;
+    @ElementList(name = "colors", required = false)
+    private Dictionary<Color> colors;
 
     public String string(String key) {
         return strings.get(key);
@@ -32,7 +33,7 @@ public class XmlVeneer {
     }
 
     public int color(String key) {
-        return ColorUtils.parseColor(colors.get(key));
+        return colors.get(key).parseColor();
     }
 
 
