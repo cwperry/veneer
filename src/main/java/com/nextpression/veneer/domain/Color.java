@@ -5,6 +5,8 @@ import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
 import org.simpleframework.xml.util.Entry;
 
+// <color name="red" value="#FFFF0000"/>
+
 @Root
 public class Color implements Entry {
 
