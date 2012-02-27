@@ -9,6 +9,7 @@ import com.google.common.collect.Lists;
 import com.xtremelabs.robolectric.RobolectricTestRunner;
 import com.xtremelabs.robolectric.shadows.ShadowBitmapDrawable;
 import com.xtremelabs.robolectric.shadows.ShadowStateListDrawable;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -46,5 +47,15 @@ public class ImageTest {
         Drawable normal = shadow.getDrawableForState(StateSet.WILD_CARD);
         assertNotNull(normal);
         assertThat(((ShadowBitmapDrawable) shadowOf(normal)).getPath(), is("/media/star.png"));
+    }
+
+    @Test
+    public void testXmlWithOneImageFileCreatesBitmapDrawable() {
+        Assert.fail("not yet implemented");
+    }
+
+    @Test
+    public void testXmlWithTwoImageFilesCreatesStateListDrawable() {
+        Assert.fail("not yet implemented");
     }
 }

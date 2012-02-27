@@ -1,5 +1,6 @@
 package com.nextpression.veneer.domain;
 
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
@@ -24,6 +25,9 @@ public class XmlVeneer {
     @ElementList(name = "colors", required = false)
     private Dictionary<Color> colors;
 
+    @ElementList(name = "images", required = false)
+    private Dictionary<Image> images;
+
     public String string(String key) {
         return strings.get(key);
     }
@@ -36,5 +40,7 @@ public class XmlVeneer {
         return colors.get(key).parseColor();
     }
 
-
+    public Drawable drawableImage(String key) {
+        return images.get(key).drawable();
+    }
 }

@@ -25,6 +25,7 @@ public class XmlResourceManagerTest {
         manifest.append(initializeStringXml());
         manifest.append(initializeColorXml());
         manifest.append(initializeGradientXml());
+
         manifest.append(createFooter());
 
         resourceManager.buildVeneer(manifest.toString());
@@ -102,6 +103,14 @@ public class XmlResourceManagerTest {
         sb.append("<color name=\"blue\" value=\"#FF0000FF\"/>");
         sb.append("<color name=\"white\" value=\"#FF000000\"/>");
         sb.append("</colors>");
+        return sb.toString();
+    }
+
+    private String initializeImageXml() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("<images>");
+        sb.append("<image name=\"icon\" file=\"icon.png\"/>");
+        sb.append("</images>");
         return sb.toString();
     }
 }
